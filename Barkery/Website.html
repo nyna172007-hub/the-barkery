@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Barkery — Sit. Stay. Sip.</title>
+    <style>
+        /* --- Brand & Design System --- */
+        :root {
+            --cream: #FDFBF7;
+            --brown: #4A3728;
+            --light-brown: #8B7355;
+            --paw-gold: #D4A373;
+            --text-main: #2C221A;
+            --text-muted: #6B5B4D;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--cream);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        h1, h2, h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--brown);
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--paw-gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        
+        a:hover {
+            color: var(--brown);
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        /* --- Hero --- */
+        .hero {
+            background: linear-gradient(135deg, #f3ebe1 0%, #FDFBF7 100%);
+            text-align: center;
+            padding: 100px 20px;
+            border-bottom: 2px solid #EAE0D5;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--light-brown);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-family: Georgia, serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- Story & Visuals --- */
+        .story-block {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .story-block:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .story-text {
+            flex: 1 1 400px;
+        }
+
+        .story-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--brown);
+        }
+
+        .story-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .story-image {
+            flex: 1 1 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(74, 55, 40, 0.15);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.03);
+        }
+
+        /* --- 3D Model Section --- */
+        .model-section {
+            background: #F4EFE9;
+            padding: 60px 40px;
+            border-radius: 24px;
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .model-grid { grid-template-columns: 1fr; }
+            .story-block, .story-block:nth-child(even) { flex-direction: column; }
+            .hero h1 { font-size: 2.8rem; }
+        }
+
+        .model-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .model-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .model-caption {
+            padding: 20px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            background: #FAF8F5;
+        }
+
+        /* --- Audio Section --- */
+        .audio-section {
+            background: var(--brown);
+            color: white;
+            padding: 80px 40px;
+            border-radius: 24px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .audio-section h2 {
+            color: var(--paw-gold);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .audio-section p {
+            color: #E8E0D5;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+
+        .audio-player-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-link {
+            display: inline-block;
+            background: var(--paw-gold);
+            color: var(--brown);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+        }
+
+        .btn-link:hover {
+            background: #E8C29F;
+        }
+
+        /* --- Floating Audio Player --- */
+        .floating-audio {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--brown);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .floating-audio:hover {
+            transform: scale(1.05);
+        }
+
+        .floating-audio button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-audio svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+        
+        .floating-audio span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Footer / Credits --- */
+        .site-footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #EAE0D5;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .site-footer strong {
+            color: var(--brown);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="container">
+            <h1>The Barkery</h1>
+            <p class="tagline">Sit. Stay. Sip.</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- STORY SECTION 1: THE EXTERIOR -->
+        <section class="story-block">
+            <div class="story-text">
+                <h3>A Warm Welcome from the Street</h3>
+                <p>Born from a simple idea: what if your morning coffee run was just as exciting for your best friend as it is for you? We built The Barkery from the ground up to be a sanctuary for dogs and their humans alike.</p>
+                <p>With our bone-shaped sign swinging in the afternoon breeze and custom dog silhouettes welcoming you from the window, you'll know exactly where you are the moment you turn the corner. It's not just a café; it's the neighborhood's new favorite meeting spot.</p>
+            </div>
+            <div class="story-image">
+                <img src="images/exterior.png" alt="The Barkery exterior with a bone sign and dog silhouettes in the window.">
+            </div>
+        </section>
+
+        <!-- STORY SECTION 2: THE INTERIOR -->
+        <section class="story-block">
+            <div class="story-text">
+                <h3>Where Good Coffee Meets Pawsome Company</h3>
+                <p>Come on in. You'll find warm brick walls, cozy lighting, and the happy hum of chatter, plus the odd tail wag. We kept the aisles wide and the tables low, so your pup can roam while you sip your latte.</p>
+                <p>It's where the community comes together. Whether you're here to work, catch up with friends, or treat your dog to a mid-day snack, The Barkery is your home away from home.</p>
+            </div>
+            <div class="story-image">
+                <img src="images/interior.png" alt="Inside The Barkery, with owners and dogs relaxing at tables.">
+            </div>
+        </section>
+
+        <!-- STORY SECTION 3: THE BARISTA -->
+        <section class="story-block">
+            <div class="story-text">
+                <h3>Meet the Team (the Goodest Boy)</h3>
+                <p>Our pups will greet you with all the love and energy they've got, and our human baristas are just as passionate. But we have to admit, our golden retriever mascot, Dogtor, steals the show every time. If you don't but a drink he might bark at you... but if you do he'll <strong> wag his tail every time he sees you!</strong> He sure is a good boy.</p>
+                <p>You'll often find him behind the counter, apron on, ready to take your order (or at least willing to accept a head scratch). He's the heart of The Barkery, and he ensures that every visit is filled with tail wags and smiles.</p>
+            </div>
+            <div class="story-image">
+                <img src="images/barista.png" alt="A golden retriever wearing an apron behind the counter.">
+            </div>
+        </section>
+
+        <!-- STORY SECTION 4: THE PRODUCT & LOGO -->
+        <section class="story-block">
+            <div class="story-text">
+                <h3>The Famous Puppuccino</h3>
+                <p>No visit to The Barkery is complete without our signature Puppuccino. It's a cup of fluffy, fresh whipped cream topped with a house-made, bone-shaped biscuit that your dog will absolutely devour.</p>
+                <p>It's the perfect treat for the perfect companion. Pair it with our fresh pastries and you've got the ultimate café experience. Our logo, a simple mix of a bone and a paw, stands for our promise: quality for you, and joy for them.</p>
+            </div>
+            <div class="story-image" style="display: flex; gap: 10px;">
+                <img src="images/puppuccino.png" alt="A puppuccino with whipped cream and a bone biscuit." style="width: 60%; border-radius: 20px 0 0 20px; object-fit: cover;">
+                <img src="images/logo.png" alt="The Barkery logo" style="width: 40%; border-radius: 0 20px 20px 0; object-fit: cover;">
+            </div>
+        </section>
+
+        <!-- 3D MODEL SECTION -->
+        <section class="model-section">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Building the Dream</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+                Before we ever poured a cup of coffee, we mapped out every detail of The Barkery. Our 3D rendering shows the exact structure and soul of the space we've created: a place designed for comfort, connection, and canine joy.
+            </p>
+            
+            <div class="model-grid">
+                <div class="model-card">
+                    <img src="images/meshy2.png" alt="3D structural model of The Barkery.">
+                    <div class="model-caption">
+                        <strong>The Final Blueprint:</strong> Capturing the exact layout of our storefront, from the window silhouettes to the bone-shaped sign.
+                    </div>
+                </div>
+                <div class="model-card">
+                    <img src="images/meshy1.png" alt="Wireframe view of The Barkery's 3D model.">
+                    <div class="model-caption">
+                        <strong>Behind the Scenes:</strong> The intricate geometry that brings our vision to life, ensuring every corner is perfect for our guests.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUDIO SECTION -->
+        <section class="audio-section">
+            <h2>The Barkery Soundtrack</h2>
+            <p>Close your eyes and imagine a sunny morning. The acoustic strumming, the light percussion: this is the sound of The Barkery. Pour a cup, grab a seat, and enjoy the ruff-ly perfect, pawsome vibes. Bark it up!</p>
+            
+            <div class="audio-player-card">
+                <p style="color: white; font-weight: bold; font-size: 1.2rem; margin: 0;">🎵 The Barkery Jingle</p>
+                <a href="https://suno.com/s/mZkOpGfQpAOpflVe" target="_blank" class="btn-link">Listen to the Track &rarr;</a>
+                <p style="font-size: 0.8rem; color: #999; margin-top: 10px;">Voiceover by ElevenLabs included in the report because I never found a way how to add it here... bark!</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FLOATING AUDIO PLAYER -->
+    <div class="floating-audio" id="audio-control" onclick="toggleAudio()">
+        <button id="audio-btn" aria-label="Toggle background music">
+            <svg id="icon-on" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            <svg id="icon-off" viewBox="0 0 24 24" style="display: none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/><line x1="1" y1="1" x2="23" y2="23" stroke="white" stroke-width="2"/></svg>
+        </button>
+        <span id="audio-text">Music: Off</span>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="barkery_jingle.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- CREDITS / FOOTER -->
+    <footer class="site-footer">
+        <p>© 2025 The Barkery. All rights reserved.</p>
+        <p style="margin-top: 15px; font-size: 0.9rem;">
+            This website was generated by <strong>DeepSeek</strong>.<br> and edited by the pawsome <strong>Francia</strong>.
+            All images, 3D models, and audio were organized neatly into this webpage by DeepSeek while I edited all the text in it, I know html... and I know it would take ages to do this myself. Bark!.
+        </p>
+    </footer>
+
+    <script>
+        const audio = document.getElementById('bg-music');
+        const btnText = document.getElementById('audio-text');
+        const iconOn = document.getElementById('icon-on');
+        const iconOff = document.getElementById('icon-off');
+        let isPlaying = false;
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                btnText.textContent = "Music: Off";
+                iconOn.style.display = 'none';
+                iconOff.style.display = 'block';
+                isPlaying = false;
+            } else {
+                audio.play().then(() => {
+                    btnText.textContent = "Music: On";
+                    iconOn.style.display = 'block';
+                    iconOff.style.display = 'none';
+                    isPlaying = true;
+                }).catch((e) => {
+                    console.log("Background music file not found. Please add barkery_jingle.mp3 to the folder.");
+                    btnText.textContent = "Music: Off";
+                    iconOn.style.display = 'none';
+                    iconOff.style.display = 'block';
+                    isPlaying = false;
+                });
+            }
+        }
+    </script>
+</body>
+</html>
